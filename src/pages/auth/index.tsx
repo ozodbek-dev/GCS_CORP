@@ -12,14 +12,17 @@ import { RootState } from "store";
 import { Navigate } from "react-router-dom";
 
 export default function AuthPage(): ReactNode {
-	const [show, setShow] = useState<boolean>(false);
-  const { onSubmit,isLoading } = useSignUpHook();
-  const { isLoggedIn } = useSelector((state: RootState) => state.auth);
+	const [show, setShow] = useState({
+		secret: false,
+		key: false,
+	});
+	const { onSubmit, isLoading } = useSignUpHook();
+	const { isLoggedIn } = useSelector((state: RootState) => state.auth);
 	const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
 		event.preventDefault();
 	};
 
-	if(isLoggedIn) return Navigate({ to: "/", replace: true });
+	if (isLoggedIn) return Navigate({ to: "/", replace: true });
 	return (
 		<Box display='flex' justifyContent='center' alignItems='center' height='100vh'>
 			<Paper
@@ -43,17 +46,17 @@ export default function AuthPage(): ReactNode {
 							label={"Key"}
 							name='key'
 							placeholder='******'
-							type={!show ? "password" : "text"}
+							type={!show.key ? "password" : "text"}
 							InputProps={{
 								endAdornment: (
 									<InputAdornment position='end'>
 										<IconButton
 											aria-label='toggle password visibility'
-											onClick={() => setShow(!show)}
+											onClick={() => setShow(prev => ({ ...prev, key: !prev.key }))}
 											onMouseDown={handleMouseDownPassword}
 											edge='end'
 										>
-											{show ? <VisibilityOff /> : <Visibility />}
+											{show.key ? <VisibilityOff /> : <Visibility />}
 										</IconButton>
 									</InputAdornment>
 								),
@@ -64,17 +67,17 @@ export default function AuthPage(): ReactNode {
 							label={"Secret"}
 							name='secret'
 							placeholder='******'
-							type={!show ? "password" : "text"}
+							type={!show.secret ? "password" : "text"}
 							InputProps={{
 								endAdornment: (
 									<InputAdornment position='end'>
 										<IconButton
 											aria-label='toggle password visibility'
-											onClick={() => setShow(!show)}
+											onClick={() => setShow(prev => ({ ...prev, secret: !prev.secret }))}
 											onMouseDown={handleMouseDownPassword}
 											edge='end'
 										>
-											{show ? <VisibilityOff /> : <Visibility />}
+											{show.secret ? <VisibilityOff /> : <Visibility />}
 										</IconButton>
 									</InputAdornment>
 								),

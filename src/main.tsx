@@ -10,7 +10,7 @@ import Loader from "components/loader/index.js";
 import App from "./App";
 import ExtraProviders from "components/extra-providers";
 
-const queryClient = new QueryClient({
+ const queryClient = new QueryClient({
 	defaultOptions: {
 		queries: {
 			refetchOnWindowFocus: false,
