@@ -1,18 +1,19 @@
 import { useHooks } from "hooks/useHooks";
-import usePost from "hooks/usePost";
+import useHttpRequest from "hooks/useHttpRequest";
 import { toast } from "react-toastify";
 import { authEndpoints } from "services/endpoints";
 import { logIn } from "store/auth";
 
 function useSignUpHook() {
 	const { navigate, dispatch, get } = useHooks();
-	const { mutate, ...otherProps } = usePost();
+	const { mutate, ...otherProps } = useHttpRequest();
 
 	const onSubmit = (formData: { name: string; email: string; key: string; secret: string }) => {
 		mutate(
 			{
 				url: authEndpoints.SIGN_UP,
 				data: formData,
+				method: "post",
 			},
 			{
 				onSuccess: data => {

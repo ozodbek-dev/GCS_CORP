@@ -1,5 +1,4 @@
-import {  LoginOutlined } from "@mui/icons-material";
-import { Avatar, Button, Menu, MenuItem } from "@mui/material";
+import { Avatar, Menu, MenuItem } from "@mui/material";
 import { useSelector } from "react-redux";
 import { RootState } from "store";
 import MenuBookIcon from "@mui/icons-material/MenuBook";
@@ -30,22 +29,6 @@ function Header() {
 					<MenuBookIcon fontSize='large' />
 					<span>BookShelf</span>
 				</Link>
-				{!isLoggedIn && (<Button
-						style={{
-							backgroundColor: "green",
-							color: "white",
-							display: "flex",
-							alignItems: "center",
-							justifyContent: "center",
-							padding: "9px 20px",
-						}}
-						endIcon={<LoginOutlined />}
-						LinkComponent={Link}
-						to='/auth'
-					>
-						Sign In
-					</Button>
-				)}
 				{isLoggedIn && (
 					<>
 						<Avatar onClick={handleClick} sx={{ cursor: "pointer" }}>

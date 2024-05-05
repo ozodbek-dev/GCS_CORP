@@ -6,7 +6,7 @@ type TMethod = "get" | "post" | "put" | "patch" | "delete";
 
 interface IPostOptions {
 	url: string;
-	data: any;
+	data?: any;
 	params?: TParams | undefined;
 	config?: AxiosRequestConfig;
 	method?: TMethod;

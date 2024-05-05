@@ -4,11 +4,11 @@ const ErrorPage = () => {
 		<div className='h-[90vh] flex flex-col gap-[2rem] items-center justify-center'>
 			<Header />
 			<main className='main'>
-				<h1 className='h1'>
+				<h1 className='text-3xl'>
 					4<span>&#xf6e2;</span>4
 				</h1>
-				<h2 className='h2'>{"Error: 404 page not found"}</h2>
-				<p className='p'>{"Oops! Something went wrong"}</p>
+				<h2 className='text-2xl'>{"Error: 404 page not found"}</h2>
+				<p className='text-lg'>{"Oops! Something went wrong"}</p>
 			</main>
 		</div>
 	);

@@ -1,19 +1,19 @@
+import useHttpRequest from "hooks/useHttpRequest";
 import useModalStore from "hooks/useModalStore";
-import usePost from "hooks/usePost";
 import useRefetchQuery from "hooks/useRefetchQueries";
 import { get } from "lodash";
 import { toast } from "react-toastify";
 import { bookEndpoints } from "services/endpoints";
 
 export default function useAddBook() {
-	const { mutate, ...otherProps } = usePost();
+	const { mutate, ...otherProps } = useHttpRequest();
 	const refetchAllBooks = useRefetchQuery(["GET_ALL_BOOKS"]);
 	const { onModalClose } = useModalStore();
 	const onSubmit = (formData: { isbn: string }) => {
 		mutate(
 			{
 				url: bookEndpoints.CREATE,
-				data: formData,
+        data: formData,
 			},
 			{
 				onSuccess: () => {

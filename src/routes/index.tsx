@@ -6,6 +6,7 @@ import Loader from "components/loader";
 import Layout from "components/layout";
 
 const Auth = lazy(() => import("pages/auth"));
+const ErrorPage = lazy(() => import("pages/ErrorPage"));
 const BooksList = lazy(() => import("pages/book/list"));
 
 const router = () => {
@@ -24,7 +25,7 @@ const router = () => {
 			path: "/",
 			loader: Loader,
 			element: <Layout />,
-			errorElement: <div>Error</div>,
+			errorElement: <ErrorPage/>,
 			children: [
 				{
 					index: true,

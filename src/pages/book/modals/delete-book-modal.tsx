@@ -1,22 +1,22 @@
 import { Backdrop, Button, CircularProgress, Modal, Paper, Typography, Stack } from "@mui/material";
-
 import useModalStore from "hooks/useModalStore";
 import { useHooks } from "hooks/useHooks";
-import useDelete from "hooks/useDelete";
 import { toast } from "react-toastify";
 import useRefetchQuery from "hooks/useRefetchQueries";
 import style from "./style";
+import useHttpRequest from "hooks/useHttpRequest";
 
 export default function DeleteBookModal() {
 	const { get } = useHooks();
 	const { onModalClose, isOpen, type, data } = useModalStore();
-	const { mutate, isLoading } = useDelete();
+	const { mutate, isLoading } = useHttpRequest();
 	const refetchAllBooks = useRefetchQuery(["GET_ALL_BOOKS"]);
 
 	const onDelete = () => {
 		mutate(
 			{
-				url: `/books/${get(data, "id", "")}`,
+        url: `/books/${get(data, "id", "")}`,
+        method: "delete",
 			},
 			{
 				onSuccess: () => {
