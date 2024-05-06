@@ -7,10 +7,8 @@ interface IProps {
 
 function Private({ children }: IProps) {
 	const isLoggedIn = useSelector((state: RootState) => state.auth.isLoggedIn);
-	if (isLoggedIn) {
-		return children;
-	}
-	return <Navigate to='/auth' />;
+	if (!isLoggedIn) return <Navigate to='/auth' />;
+	return children;
 }
 
 export default Private;
