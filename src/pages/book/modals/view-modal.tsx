@@ -24,8 +24,8 @@ function ViewModal() {
 						Detailes
 					</Typography>
 					<Stack gap={"1rem"} direction={"column"} className='w-full'>
-						<Typography variant='body1' component='p'>
-							Are you sure you want to delete this book?
+						<Typography variant='body1' fontWeight={"bold"} component='p'>
+							{get(data, "title", "-")}
 						</Typography>
 						<Stack direction={"row"} gap='1rem'>
 							<img className='w-[150px]  object-cover' src={get(data, "cover", "")} alt={get(data, "title", "")} />
